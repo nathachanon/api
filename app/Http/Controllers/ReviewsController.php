@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Product;
 use App\Model\Reviews;
+use App\Http\Resources\ReviewResource;
+use App\Http\Resources\Product\ProductResource;
+use App\Http\Resources\Product\ProductCollection;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
@@ -12,9 +16,10 @@ class ReviewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $products) //$products match in database
     {
-        //
+
+        return ReviewResource::collection($products->reviews);
     }
 
     /**
