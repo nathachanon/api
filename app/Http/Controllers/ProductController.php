@@ -98,6 +98,7 @@ class ProductController extends Controller
         $product->update($request->all());
 
          return response([
+            'message'=> 'Update Success',
             'data' => new ProductResource($product)
 
       ],201);
@@ -111,6 +112,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response(['message'=> 'Delete Success'],201);
     }
 }
