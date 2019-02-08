@@ -78,9 +78,12 @@ class ReviewsController extends Controller
      * @param  \App\Model\Reviews  $reviews
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reviews $reviews)
+    public function update(Request $request, Product $products, Reviews $review)
     {
-        //
+         $review->update($request->all());
+         return Response([
+            'data' => new ReviewResource($review)
+        ],201);
     }
 
     /**
